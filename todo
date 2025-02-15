@@ -1,0 +1,12 @@
+opacity setting on api endpoint /watermark/update/{string}/{opacity}
+make custom text/string on api endpoint above
+make actul watermark logic
+
+figure out where to use sha256 
+
+make the file overwrite logic for "force" api endpoint 
+
+
+make the image repository logic 
+
+

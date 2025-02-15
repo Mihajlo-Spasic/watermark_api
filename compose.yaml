@@ -1,0 +1,23 @@
+services:
+  mysql_database:
+    container_name: watermark_api_database_container
+    image: mysql:latest
+    ports:
+      - "${MYSQL_PORT}:3306" # Should be 4000
+    environment:
+      MYSQL_ROOT_USER: ${DB_USER}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+  watermark_api:
+    image: watermark_api_image:latest
+    ports:
+      - "${WATERMARK_API_PORT}:8080" # Should be 4005
+    volumes:
+      - original_image:/original_image
+      - watermark_image:/watermark_image
+
+volumes:
+  mysql:
+  original_image:
+  watermark_image:    
+
