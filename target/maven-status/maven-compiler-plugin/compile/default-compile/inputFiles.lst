@@ -1,2 +1,6 @@
-/home/spale/Programming/tests/testAPI/src/main/java/com/example/api/API_logic.java
-/home/spale/Programming/tests/testAPI/src/main/java/com/example/api/Main.java
+/home/spale/Programming/watermark/src/main/java/com/example/Services/ImageService.java
+/home/spale/Programming/watermark/src/main/java/com/example/api/API_logic.java
+/home/spale/Programming/watermark/src/main/java/com/example/api/Database/Database_instance.java
+/home/spale/Programming/watermark/src/main/java/com/example/api/Database/ImageEntity.java
+/home/spale/Programming/watermark/src/main/java/com/example/api/Database/ImageRepository.java
+/home/spale/Programming/watermark/src/main/java/com/example/api/Main.java

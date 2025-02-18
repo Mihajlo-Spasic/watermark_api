@@ -1,13 +1,13 @@
 package com.example.api.Database;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class ImageRepository {
-   public void queueEntity(MultipartFile file){
+import java.util.Optional;
 
-   } 
-
-   public boolean checkFileExistence(MultipartFile file){
-    return true; 
-   }
+@Repository
+public interface ImageRepository extends JpaRepository<ImageEntity, Long> {
+    
+    Optional<ImageEntity> findByFilename(String filename);
+    Optional<ImageEntity> findByImagePath(String imagepath);
 }

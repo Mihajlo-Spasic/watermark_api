@@ -12,9 +12,13 @@ services:
     image: watermark_api_image:latest
     ports:
       - "${WATERMARK_API_PORT}:8080" # Should be 4005
+    environment:
+      env_file: /etc/environment
+
     volumes:
       - original_image:/original_image
       - watermark_image:/watermark_image
+
 
 volumes:
   mysql:

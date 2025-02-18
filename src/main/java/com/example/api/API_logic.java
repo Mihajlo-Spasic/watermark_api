@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.api.Database.ImageRepository;
+import com.example.Services.ImageService;
+
 
 
 @RestController
 @RequestMapping("/watermark")
 public class API_logic {
 
-    ImageRepository ImageRepo;
+    private ImageService imageService;
 
 
     @PostMapping({"/upload", "/upload/{text}", "/upload/force/{text}","/upload/{text}/{oppacity}"})
@@ -37,12 +38,12 @@ public class API_logic {
             return ResponseEntity.badRequest()
                                  .body("[BAD REQUEST] File not sent");
         }
-        if ( (force != "force") && (ImageRepo.checkFileExistence(file)) ){
+        if ( (force != "force") && (imageService.checkFileExistence(file)) ){
             return ResponseEntity.badRequest()
                                  .body("[BAD REQUEST] File with the same name already exists. Use `force` to change the previous entry");
         } 
 
-        ImageRepo.queueEntity(file);
+       imageService.queueEntity(file);
 
         System.out.println("Received file: " + file.getOriginalFilename());
         return ResponseEntity.accepted().build();
