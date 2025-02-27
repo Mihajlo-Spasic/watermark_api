@@ -4,11 +4,12 @@ WORKDIR /watermark-api
 
 COPY . /watermark-api
 
-RUN mkdir original_image
-RUN mkdir watermark_image
+RUN mkdir -p original_image
+RUN mkdir -p watermark_image
 
 RUN apt-get update && apt-get install -y maven
 
 EXPOSE 4005
+EXPOSE 4000
 
 CMD ["mvn","spring-boot:run"]

@@ -32,20 +32,23 @@ public class API_logic {
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file,
                                               @PathVariable(required = false) String force,
                                               @PathVariable(required = false) String text,
-                                              @PathVariable(required = false) int opacity) {
+                                              @PathVariable(required = false) int opacity) throws IOException {
 
         if(file.isEmpty()) {
             return ResponseEntity.badRequest()
                                  .body("[BAD REQUEST] File not sent");
         }
-        if ( (force != "force") && (imageService.checkFileExistence(file)) ){
+        if ( (force != "force") && (imageService.fileExists(file)) ){
             return ResponseEntity.badRequest()
                                  .body("[BAD REQUEST] File with the same name already exists. Use `force` to change the previous entry");
         } 
 
-       imageService.queueEntity(file);
-
+        imageService.saveFilename(file.getOriginalFilename());
         System.out.println("Received file: " + file.getOriginalFilename());
+        //Or any kind of logging service
+
+        imageService.queueEntity(file, text, opacity);
+
         return ResponseEntity.accepted().build();
     }   
 

@@ -15,10 +15,9 @@ public class ImageEntity {
 
     public ImageEntity(){}
 
-    public ImageEntity(String imagePath) {
-        this.filename = imagePath;
+    public ImageEntity(String filename) {
+        this.filename = filename; 
     }
-
     public Long getId() {
         return id;
     }
@@ -27,8 +26,7 @@ public class ImageEntity {
         return filename;
     }
 
-    public void setFilename(String imagePath) {
-        this.filename = imagePath;
+    public void setFilename(String filename) {
+        this.filename = filename;  
     }
-
 }
