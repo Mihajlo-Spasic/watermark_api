@@ -28,11 +28,10 @@ public class API_logic {
     private ImageService imageService;
 
 
-    @PostMapping({"/upload", "/upload/{text}", "/upload/force/{text}","/upload/{text}/{oppacity}"})
+    @PostMapping({"/upload", "/upload/{text}", "/upload/force/{text}"})
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file,
                                               @PathVariable(required = false) String force,
-                                              @PathVariable(required = false) String text,
-                                              @PathVariable(required = false) int opacity) throws IOException {
+                                              @PathVariable(required = false) String text) throws IOException {
 
         if(file.isEmpty()) {
             return ResponseEntity.badRequest()
@@ -47,7 +46,7 @@ public class API_logic {
         System.out.println("Received file: " + file.getOriginalFilename());
         //Or any kind of logging service
 
-        imageService.queueEntity(file, text, opacity);
+        imageService.queueEntity(file, text);
 
         return ResponseEntity.accepted().build();
     }   
